@@ -21,17 +21,18 @@ namespace Superheroes
     public partial class MainWindow : Window
     {
         List<Superheroe> personaje = Superheroe.GetSamples();
+     
 
         public MainWindow()
         {
             
             InitializeComponent();
+            xenvuevelDock.DataContext = personaje;
+            
+
         }
 
-        private void CambiaColorFondo() 
-        {
-            if (xGrupoPertenece.Tag == true) { }
-        }
-    
+        
+
     }
 }
