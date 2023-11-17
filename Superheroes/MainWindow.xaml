@@ -11,17 +11,26 @@
 
     <Window.Resources>
         <local:BackGroundConverter  x:Key="conversor"></local:BackGroundConverter>
+        <local:Logs x:Key="muestraGrupo"></local:Logs>
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="Width" Value="80"></Setter>
             <Setter Property="Height" Value="30"></Setter>
         </Style>
-        
+
+        <Style TargetType="{x:Type Image}" x:Key="flechas">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Source" Value="/arrow.png"/>
+            <EventSetter Event="MouseLeftButtonDown" Handler ="Pasar_Personaje_MouseLeftButtonDown"></EventSetter>
+            
+        </Style>
+
     </Window.Resources>
-    
+
     <DockPanel LastChildFill="true"  x:Name ="xenvuevelDock"
               Background="{Binding Path=Heroe, Converter={StaticResource conversor}}">
-        
+
         <DockPanel LastChildFill="False" DockPanel.Dock="Top">
 
             <Label 
@@ -35,35 +44,74 @@
                     <DropShadowEffect ShadowDepth="6" BlurRadius="10" Color="#FF000000"/>
                 </Label.Effect>
             </Label>
-            
-            <Image 
-               x:Name="xGrupoPertenece"
-               DockPanel.Dock="Right"/>
+
+            <StackPanel DockPanel.Dock="Right"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right">
+                <Image 
+                   x:Name="xGrupoVengador"
+                   Source="/avengers.png"
+                   Margin="0,0,40,0"
+                   Width="80"
+                   Height="90"
+                   Visibility="{Binding Path= Vengador, Converter={StaticResource muestraGrupo}}"
+                   />
+                <Image 
+                   x:Name="Mutante"
+                   DockPanel.Dock="Right"
+                   Source="/xmen.png"
+                   Margin="0,0,30,0"
+                   Width="80"
+                   Height="90"
+                   Visibility="{Binding Path= Xmen, Converter={StaticResource muestraGrupo}}"
+                   />
+                
+            </StackPanel>
             
         </DockPanel>
-        
+
         <StackPanel DockPanel.Dock="Bottom"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal"
                     Margin="15">
-        <Button Content="FLECHA 1" ></Button>
+
+            <Image x:Name="xIzquierdaImage" Style="{StaticResource flechas}"></Image>
+
             <TextBlock 
                 x:Name="xpaginaTextBlock"
+                VerticalAlignment="Center"
                 Text="1/3" 
                 FontWeight="Bold" 
                 FontFamily="Comic Sanz"
                 FontSize="16"/>
-            <Button Content="FLECHA 1" ></Button>
+
+            <Image 
+                x:Name="xDerechaImage"
+                Style="{StaticResource flechas}" RenderTransformOrigin="0.5,0.5"
+                >
+                
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="179.039"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
         </StackPanel>
-    
-        <Image 
+
+        <Image
             Source="{Binding Path = Imagen}" 
             DockPanel.Dock="Top"
             Stretch="Fill"
-            Margin="20"/>
+            Margin="20"
+            />
 
- 
+
 
     </DockPanel>
 </Window>

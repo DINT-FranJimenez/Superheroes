@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="shield.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="arrow.png" />
   </ItemGroup>
 
 </Project>

@@ -20,19 +20,40 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Superheroe> personaje = Superheroe.GetSamples();
+        private int posicion = 0;
+
+        List<Superheroe> personaje;
      
 
         public MainWindow()
         {
             
             InitializeComponent();
-            xenvuevelDock.DataContext = personaje;
+            personaje = Superheroe.GetSamples();
+            xenvuevelDock.DataContext = personaje.FirstOrDefault();
             
 
         }
 
-        
+        private void Pasar_Personaje_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) 
+        {
+            Image image = (Image)sender;
+
+            if (image.Name == "xDerechaImage" &&
+                posicion < 2)
+            {
+                posicion++;
+                xpaginaTextBlock.Text = posicion + 1 + "/3";
+                xenvuevelDock.DataContext = personaje[posicion];
+            }
+            else if (image.Name == "xIzquierdaImage" &&
+                posicion > 0) 
+            { 
+                posicion--;
+                xpaginaTextBlock.Text = posicion + 1 + "/3";
+                xenvuevelDock.DataContext = personaje[posicion];
+            }
+        }
 
     }
 }
