@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="arrow.png" />
+    <None Remove="avengers.png" />
+    <None Remove="xmen.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,8 @@
 
   <ItemGroup>
     <Resource Include="arrow.png" />
+    <Resource Include="avengers.png" />
+    <Resource Include="xmen.png" />
   </ItemGroup>
 
 </Project>
